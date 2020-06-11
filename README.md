@@ -1,6 +1,6 @@
 # Angular 9 Tutorial: Creating Firebase Chat Web App
 
-This source code is part of [Angular 9 Tutorial: Creating Firebase Chat Web App]().
+This source code is part of [Angular 9 Tutorial: Creating Firebase Chat Web App](https://www.djamware.com/post/5ee1d127711dcf4b441296de/angular-9-tutorial-creating-firebase-chat-web-app).
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
 
