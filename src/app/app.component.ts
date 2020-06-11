@@ -1,4 +1,10 @@
 import { Component } from '@angular/core';
+import * as firebase from 'firebase';
+
+const config = {
+  apiKey: 'YOUR_API_KEY',
+  databaseURL: 'YOUR_DATABASE_URL'
+};
 
 @Component({
   selector: 'app-root',
@@ -7,4 +13,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-chat';
+
+  constructor() {
+    firebase.initializeApp(config);
+  }
 }

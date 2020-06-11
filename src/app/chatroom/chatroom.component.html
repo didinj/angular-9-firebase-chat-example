@@ -1,0 +1,50 @@
+<div class="example-container mat-elevation-z8">
+  <mat-drawer-container class="drawer-container">
+    <mat-drawer mode="side" opened class="left-drawer">
+      <div class="users-pane">
+        <mat-card class="users-card">
+          <button type="button" mat-button matSuffix mat-icon-button aria-label="Exit" (click)="exitChat()">
+            <mat-icon>logout</mat-icon>
+          </button>
+        </mat-card>
+        <mat-card class="users-card" *ngFor="let user of users">
+          <mat-icon>person</mat-icon> <span class="username">{{user.nickname}}</span>
+        </mat-card>
+      </div>
+    </mat-drawer>
+    <mat-drawer-content class="chat-pane">
+      <div #chatcontent [scrollTop]="scrolltop" class="chat-content">
+        <div class="message-box" *ngFor="let chat of chats">
+          <div class="chat-status" text-center *ngIf="chat.type==='join'||chat.type==='exit';else message">
+            <span class="chat-date">{{chat.date | date:'short'}}</span>
+            <span class="chat-content-center">{{chat.message}}</span>
+          </div>
+          <ng-template #message>
+            <div class="chat-message">
+              <div class="right-bubble" [ngClass]="{'right-bubble': chat.nickname === nickname, 'left-bubble': chat.nickname !== nickname}">
+                <span class="msg-name" *ngIf="chat.nickname === nickname">Me</span>
+                <span class="msg-name" *ngIf="chat.nickname !== nickname">{{chat.nickname}}</span>
+                <span class="msg-date"> at {{chat.date | date:'short'}}</span>
+                <p text-wrap>{{chat.message}}</p>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+      <footer class="sticky-footer">
+        <form class="message-form" [formGroup]="chatForm" (ngSubmit)="onFormSubmit(chatForm.value)">
+          <mat-form-field class="message-form-field">
+            <input matInput placeholder="Enter message here" formControlName="message"
+                    [errorStateMatcher]="matcher">
+            <mat-error>
+              <span *ngIf="!chatForm.get('message').valid && chatForm.get('message').touched">Enter your message</span>
+            </mat-error>
+            <button type="submit" [disabled]="!chatForm.valid" mat-button matSuffix mat-icon-button aria-label="Send">
+              <mat-icon>send</mat-icon>
+            </button>
+          </mat-form-field>
+        </form>
+      </footer>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>
