@@ -21,17 +21,21 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   nickname = '';
   ref = firebase.database().ref('users/');
+  
   matcher = new MyErrorStateMatcher();
 
   constructor(private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    // if user allredy logedin then send to a roollist
     if (localStorage.getItem('nickname')) {
       this.router.navigate(['/roomlist']);
     }
     this.loginForm = this.formBuilder.group({
       'nickname' : [null, Validators.required]
     });
+    console.log(this.ref);
+    
   }
 
   onFormSubmit(form: any) {

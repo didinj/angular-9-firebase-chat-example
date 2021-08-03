@@ -33,6 +33,8 @@ export class RoomlistComponent implements OnInit {
       this.rooms = [];
       this.rooms = snapshotToArray(resp);
       this.isLoadingResults = false;
+      console.log(this.rooms);
+      
     });
   }
 
