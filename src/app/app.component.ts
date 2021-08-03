@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import * as firebase from 'firebase';
 
 const config = {
-  apiKey: 'YOUR_API_KEY',
-  databaseURL: 'YOUR_DATABASE_URL'
+  apiKey: 'AIzaSyApFDAgwjSbzYyQ0mPBBxaEVAc7e_1xGPw',
+  databaseURL: 'https://chat-app-2a334-default-rtdb.firebaseio.com'
 };
 
 @Component({
